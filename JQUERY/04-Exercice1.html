@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercice 1 en JQuery</title>
+</head>
+<body>
+    <form action="" id="MonFormulaire">
+        <input type="text" required placeholder="Nom et Prenom" id="nomcomplet">
+        <input type="submit" value="Je Valide">
+    </form>
+
+    <!-- CONSIGNE : Avec l'aide de JQuery, vous devrez :
+    
+        1 - A la soumission du formulaire, cacher le formulaire puis:
+        2 - créer un élément <p>
+        3 - Dans cet élément, afficher : Bonjour <nomcomplet> correspondant au nom saisie dans le formulaire. 
+     -->
+
+          <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+        <script>
+          /*   // -- la fonction demarre quand le formulaire est envoyé
+            $(document).submit(function(){
+
+                // -- je fait disparaitre le formulaire
+                $('form').hide('slow');//,function(){
+                
+                    // je crée un paragraphe avec les le resultat du formulaire
+                  $('<p>').html('Bonjour').appendTo('body');
+
+              //  });
+            });*/
+
+// ----------------COREECTION -------------------------------------------------
+
+            $('#MonFormulaire').on('submit',function(event){
+                // -- Cette fonction anonyme sera executé à la soumission du formulaire.
+                // -- Permet d'annuler l'action par defaut du submit du formulaire.
+                event.preventDefault();
+                $(this).replaceWith('<p>Bonjour '+ $('#nomcomplet').val()+ ' !</p>');
+
+                // -- console.log($(this)) Ici, $(this) correspond à form#MonFormulaire  
+            });
+
+
+        </script>
+
+</body>
+</html>
