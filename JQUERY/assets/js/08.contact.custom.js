@@ -64,8 +64,13 @@ $(function(){
             }
 
             if($(this).find('.has-error').length == 0) {
+                ajouterContact();
+                 $('.alert alert-success alert-contact').text(); // renvoie le texte contenu à l'intérieur du paragraphe
+                reinitialisationDuFormulaire();
+                $('.aucuncontact').remove();
+               
 
-                 $(this).replaceWith('<div class="alert alert-success">Votre demande à bien été envoyée ! Nous vous répondrons dans les meilleurs délais.</div>');
+               // $(this).replaceWith('<div class="alert alert-success">Votre demande à bien été envoyée ! Nous vous répondrons dans les meilleurs délais.</div>');
 
             } else {
                 $(this).prepend('<div class="alert alert-danger">Nous n\'avons pas été en mesure de valider votre demande. Vérifiez vos informations.</div>')
@@ -91,7 +96,9 @@ $(function(){
     });
     };
     // Affichage d'une notification
-    function afficheUneNotification() {}
+    function afficheUneNotification() {
+          $('.alert alert-success alert-contact').text(); // renvoie le texte contenu à l'intérieur du paragraphe
+    }
 
 
     // -- Vérification de la présence d'un contact dans contacts

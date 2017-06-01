@@ -58,7 +58,7 @@ $(function() {
                   // -- 3. vérification du email
             if(!validateEmail(email.val())){
                 email.parent().addClass('has-error');
-                  $("<p class='text-danger'>Teubé ta oubliez de saisir ton Email BATARD!!!!!!!!!!!!!!!!!!</p>").appendTo(email.parent());
+                  $("<p class='text-danger'>Teubé ta oubliez de saisir ton Email BATARD!!!</p>").appendTo(email.parent());
             }
                   // -- 4. vérification du tel
             if(tel.val().length == 0 || $.isNumeric(tel.val())  == false) { 
