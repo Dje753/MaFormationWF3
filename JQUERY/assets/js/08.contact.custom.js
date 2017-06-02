@@ -75,7 +75,7 @@ $(function(){
             } else {
                 $(this).prepend('<div class="alert alert-danger">Nous n\'avons pas été en mesure de valider votre demande. Vérifiez vos informations.</div>')
 
-            }
+            } 
 
 
 

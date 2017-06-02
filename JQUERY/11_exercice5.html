@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercice 5</title>
+ 
+<style>
+    main{ width:900px; height: auto; margin: 0 auto} 
+    section{ width: 100%; height: auto; min-height: 200px; margin-bottom: 10px; background-image: linear-gradient(0deg, #ccc, #fff); border: 1px solid #ccc}
+    h3{ font-family: Arial, Helvetica, sans-serif; font-weight: normal; text-align: center; color: blueviolet}
+    article{ font-family: Arial, Helvetica, sans-serif; font-size: 12px; padding: 20px}
+    input[type=text]{
+        width: 100%;
+        height: 
+
+    }
+</style>
+</head>
+<body>
+    <main>
+        <input type="text" placeholder="Saisissez un terme à surligner..." id="markjs">
+         <!--<section>
+            <header>
+                <h1>TITRE DE MON ARTICLE</h1>
+            </header>
+            <article>
+                Coantenu de mon article
+            </article>
+        </section>-->
+
+    </main>
+
+    <!-- CONSIGNE : Avec l'aide de Jquery, vous devrez:
+
+    -->
+
+       <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.10.1/jquery.mark.es6.js"></script>
+
+   <script>
+        $(function(){
+            // -- DOM est prêt !
+
+            // -- & recuperation ds articles
+             $.getJSON('http://jsonplaceholder.typicode.com/posts', function(articles) {
+                 // -- Aperçu dans la console
+                    console.log(articles);
+                
+                // -- A. 1éré solution la boucle for
+               for(i = 0 ; i < 5 ; i++){
+
+                    // -- Je récupére a chaque itération de ma boucle, un objet (article)
+                    let article = articles[i];
+
+                    // -- Affichage dansz ma page HTML
+                    $(`<section>
+                            <header>
+                                <h1>${article.title}</h1>
+                            </header>
+                            <article>
+                                ${article.body}
+                            </article>
+                        </section>`).appendTo($('main'));
+                } 
+        
+                // -- B 2éme solution : la Boucle each
+             /*   $.each(articles, function(indice, article){
+                    
+                    // -- Ecriture dans la page HTML
+                      $(`<section>
+                            <header>
+                                <h1>${article.title}</h1>
+                            </header>
+                            <article>
+                                ${article.body}
+                            </article>
+                        </section>`).appendTo($('main'));
+                        // -- si mon indie i =5 alors j'arrete l'éxécution de ma fonction
+                        if(i == 5) {
+                            return false;
+                        }
+                } */
+                 
+  
+            }); // -- Fin du getJSON
+
+            // -- MARK-JS
+            $('#markjs').on('input', function(e){
+                // -- Cette fonction va s'éxécuter à chaque fois que l'utilisateur va lever son doigt d'une touche du clavier 
+
+                // -- récuperer la valeur saisie par l'utilisateur
+                let keyword = $(this).val();
+
+                // -- https://markjs.io/#mark & https://markjs.io/#unmark
+                $('section').unmark().mark(keyword);
+
+
+
+            });
+
+
+        });
+
+    </script>
+
+</body>
+</html>
